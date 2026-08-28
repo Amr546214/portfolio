@@ -17,6 +17,12 @@ dist-ssr
 .env.*
 !.env.example
 
+# Personal assets (stored in Supabase, not repo)
+*.pdf
+src/assets/*.jpg
+src/assets/*.jpeg
+src/assets/*.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
