@@ -58,7 +58,7 @@ export default function App() {
     return (
       <>
         {!booted && <BootScreen onDone={() => setBooted(true)} />}
-        <div className="h-full w-full overflow-hidden relative">
+        <div className="h-full w-full relative">
           <BackgroundFX />
           <MobileView />
         </div>

@@ -32,7 +32,7 @@ export function MobileView() {
   const whatsapp = socialLinks.find((s) => s.platform === 'whatsapp');
 
   return (
-    <div className="min-h-full w-full overflow-y-auto pb-16">
+    <div className="h-full w-full overflow-y-auto pb-16">
       {/* Status bar */}
       <div className="h-7 px-4 flex items-center justify-between text-[11px] text-white/70">
         <span className="font-semibold flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-os-gold" /> AmrOS</span>
@@ -44,7 +44,7 @@ export function MobileView() {
           <button onClick={() => setOpen(null)} className="mx-2 my-2 flex items-center gap-1.5 text-[13px] text-os-gold">
             <ArrowLeft className="w-4 h-4" /> Home
           </button>
-          <div className="rounded-2xl overflow-hidden glass-strong shadow-window min-h-[70vh]">
+          <div className="rounded-2xl overflow-y-auto glass-strong shadow-window h-[calc(100vh-110px)]">
             {open === 'about' && <AboutWindow />}
             {open === 'experience' && <ExperienceWindow />}
             {open === 'skills' && <SkillsWindow />}
