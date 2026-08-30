@@ -55,9 +55,9 @@ export function ProjectsWindow() {
   if (loading) return <div className="p-8 text-white/50">Loading…</div>;
 
   return (
-    <div className="flex h-full min-h-0">
+    <div className="flex flex-col md:flex-row h-full min-h-0">
       {/* Sidebar */}
-      <aside className="w-56 shrink-0 border-r border-white/[0.05] bg-black/25 overflow-y-auto p-3">
+      <aside className="w-full md:w-56 shrink-0 border-b md:border-b-0 md:border-r border-white/[0.05] bg-black/25 overflow-x-auto md:overflow-x-hidden overflow-y-hidden md:overflow-y-auto p-3">
         <p className="px-2 text-[10px] uppercase tracking-widest text-white/40 mt-1">Project Explorer</p>
         <p className="px-2 text-[11px] text-white/40 mt-1 mb-3 leading-snug">A curated view of my strongest work across platforms.</p>
         <p className="px-2 text-[10px] uppercase tracking-widest text-white/40 mt-2 mb-1">Quick access</p>
@@ -107,7 +107,7 @@ export function ProjectsWindow() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 40, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-              className="w-[300px] shrink-0 border-l border-white/[0.05] bg-black/30 overflow-y-auto"
+              className="w-full md:w-[300px] shrink-0 border-t md:border-t-0 md:border-l border-white/[0.05] bg-black/30 overflow-y-auto"
             >
               <div className="p-5">
                 <div className="flex items-start justify-between gap-2">

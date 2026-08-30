@@ -44,7 +44,7 @@ export function MobileView() {
           <button onClick={() => setOpen(null)} className="mx-2 my-2 flex items-center gap-1.5 text-[13px] text-os-gold">
             <ArrowLeft className="w-4 h-4" /> Home
           </button>
-          <div className="rounded-2xl overflow-y-auto glass-strong shadow-window h-[calc(100vh-110px)]">
+          <div className="rounded-2xl overflow-y-auto overflow-x-hidden glass-strong shadow-window h-[calc(100vh-110px)]">
             {open === 'about' && <AboutWindow />}
             {open === 'experience' && <ExperienceWindow />}
             {open === 'skills' && <SkillsWindow />}
