@@ -1,75 +1,43 @@
-# React + TypeScript + Vite
+# AmrOS Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive desktop-style portfolio for Amr Okasha. Visitors can open, move, and switch between windows to explore projects, skills, experience, and contact information. Smaller screens use a dedicated mobile layout.
 
-Currently, two official plugins are available:
+[Open the live portfolio](https://portfolio-six-beta-fsv8cxz8pj.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![AmrOS desktop with the Projects window open](docs/images/preview.webp)
 
-## React Compiler
+*The preview shows the actual interface with local sample records.*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How it works
 
-## Expanding the ESLint configuration
+| Layer | Implementation |
+| --- | --- |
+| Interface | React, TypeScript, Tailwind CSS, and Framer Motion |
+| Desktop shell | Window state, stacking, and minimize/restore in `src/os/` |
+| Public content | Supabase-backed profile, projects, skills, experience, education, and links |
+| Content management | Supabase Auth and a built-in admin screen at `/#/admin` |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Run locally
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Use Node.js 22.12+ and npm.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm ci
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Create `.env.local` in the repository root.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```dotenv
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-public-anon-or-publishable-key
 ```
+
+Use a development Supabase project with the portfolio tables listed in [the generated types](src/lib/database.types.ts), read policies for public content, and sample records. Admin editing also needs an authorized account, write policies, and Storage configuration for uploads. The repository includes client types rather than a database bootstrap, so installing dependencies does not provision these resources. Browser environment variables must contain client-safe values.
+
+```bash
+npm run dev
+npm run build
+npm run lint
+```
+
+Public UI components are in [`src/components/`](src/components/), Supabase queries in [`src/lib/services.ts`](src/lib/services.ts), and content editors in [`src/admin/`](src/admin/).
